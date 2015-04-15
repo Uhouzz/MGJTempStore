@@ -1,6 +1,6 @@
 ## MGJTempStore 是什么
 
-MGJTempStore 是一个用于临时存储数据的 Objective-C 存储类库
+MGJTempStore 是一个用于临时存储数据的 Objective-C 类库
 
 ## 使用场景
 
@@ -35,3 +35,7 @@ MGJTempStore *store = [[MGJTempStore alloc] initWithPath:@"tmp.txt"];
 1. 写入数据，目前只接受 `NSString`
 2. 拿到数据后，如果消费失败，则调用这个 Block，数据会被重新放回去
 3. 如果消费成功，就调用这个 Block，数据会被清除
+
+## 协议
+
+MGJTempStore 被许可在 MIT 协议下使用。查阅 LICENSE 文件来获得更多信息。
