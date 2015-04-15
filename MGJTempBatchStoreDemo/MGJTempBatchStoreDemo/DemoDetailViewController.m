@@ -66,6 +66,7 @@
 {
     [super viewDidAppear:animated];
     [self.store clearData];
+    [self.store addObserver:self forKeyPath:@"fileSize" options:NSKeyValueObservingOptionNew context:nil];
     [self.resultTextView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     [self performSelector:self.selectedSelector withObject:nil afterDelay:0];
 }
@@ -147,7 +148,6 @@
 {
     [self appendLog:@"写入 1K 的数据"];
     
-    [self.store addObserver:self forKeyPath:@"fileSize" options:NSKeyValueObservingOptionNew context:nil];
     NSString *stringToBeWritten = @"the quick brown fox jumps over the lazy dog\n";
     for (int i = 0; i < 25; i++) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(i * 0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
