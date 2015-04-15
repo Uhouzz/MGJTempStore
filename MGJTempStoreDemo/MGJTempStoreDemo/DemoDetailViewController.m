@@ -8,12 +8,12 @@
 
 #import "DemoDetailViewController.h"
 #import "DemoListViewController.h"
-#import "MGJTempBatchStore.h"
+#import "MGJTempStore.h"
 
 @interface DemoDetailViewController ()
 @property (nonatomic) UITextView *resultTextView;
 @property (nonatomic) SEL selectedSelector;
-@property (nonatomic) MGJTempBatchStore *store;
+@property (nonatomic) MGJTempStore *store;
 @end
 
 @implementation DemoDetailViewController
@@ -22,7 +22,7 @@
 {
     DemoDetailViewController *detailViewController = [[DemoDetailViewController alloc] init];
     [DemoListViewController registerWithTitle:@"插入多条数据并消费成功" handler:^UIViewController *{
-        detailViewController.selectedSelector = @selector(demoAppendBatchData);
+        detailViewController.selectedSelector = @selector(demoAppendData);
         return detailViewController;
     }];
     
@@ -45,7 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithRed:239.f/255 green:239.f/255 blue:244.f/255 alpha:1];
-    self.store = [[MGJTempBatchStore alloc] initWithFilePath:@"temp"];
+    self.store = [[MGJTempStore alloc] initWithFilePath:@"temp"];
     [self.view addSubview:self.resultTextView];
     // Do any additional setup after loading the view.
 }
@@ -113,13 +113,13 @@
 
 #pragma mark -
 
-- (void)demoAppendBatchData
+- (void)demoAppendData
 {
     [self appendLog:@"append data foo"];
     [self.store appendData:@"foo"];
     [self appendLog:@"append data bar"];
     [self.store appendData:@"bar"];
-    [self.store consumeDataWithHandler:^(NSString *content, MGJTempBatchStoreConsumeSuccessBlock successBlock, MGJTempBatchStoreConsumeFailureBlock failureBlock) {
+    [self.store consumeDataWithHandler:^(NSString *content, MGJTempStoreConsumeSuccessBlock successBlock, MGJTempStoreConsumeFailureBlock failureBlock) {
         [self appendLog:[NSString stringWithFormat:@"got content:%@", content]];
         successBlock();
     }];
@@ -129,14 +129,14 @@
 {
     [self appendLog:@"写入数据: foobar"];
     [self.store appendData:@"foobar"];
-    [self.store consumeDataWithHandler:^(NSString *content, MGJTempBatchStoreConsumeSuccessBlock successBlock, MGJTempBatchStoreConsumeFailureBlock failureBlock) {
+    [self.store consumeDataWithHandler:^(NSString *content, MGJTempStoreConsumeSuccessBlock successBlock, MGJTempStoreConsumeFailureBlock failureBlock) {
         // 假设向服务器发送数据失败
         [self appendLog:[NSString stringWithFormat:@"拿到数据: %@", content]];
         failureBlock();
         [self appendLog:@"发送数据给服务器失败，数据自动放回"];
         // 这时数据会被重新放回去
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.store consumeDataWithHandler:^(NSString *content, MGJTempBatchStoreConsumeSuccessBlock successBlock, MGJTempBatchStoreConsumeFailureBlock failureBlock) {
+            [self.store consumeDataWithHandler:^(NSString *content, MGJTempStoreConsumeSuccessBlock successBlock, MGJTempStoreConsumeFailureBlock failureBlock) {
                 [self appendLog:[NSString stringWithFormat:@"再次获取数据: %@", content]];
                 successBlock();
             }];

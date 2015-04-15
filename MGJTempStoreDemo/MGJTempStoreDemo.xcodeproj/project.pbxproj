@@ -11,8 +11,8 @@
 		6A786B971AD502DB00D72F42 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A786B961AD502DB00D72F42 /* AppDelegate.m */; };
 		6A786B9F1AD502DB00D72F42 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A786B9E1AD502DB00D72F42 /* Images.xcassets */; };
 		6A786BA21AD502DB00D72F42 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A786BA01AD502DB00D72F42 /* LaunchScreen.xib */; };
-		6A786BAE1AD502DB00D72F42 /* MGJTempBatchStoreDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A786BAD1AD502DB00D72F42 /* MGJTempBatchStoreDemoTests.m */; };
-		6A786BBC1AD5050900D72F42 /* MGJTempBatchStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A786BBB1AD5050900D72F42 /* MGJTempBatchStore.m */; };
+		6A786BAE1AD502DB00D72F42 /* MGJTempStoreDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A786BAD1AD502DB00D72F42 /* MGJTempStoreDemoTests.m */; };
+		6A786BBC1AD5050900D72F42 /* MGJTempStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A786BBB1AD5050900D72F42 /* MGJTempStore.m */; };
 		6A786BC11AD5079200D72F42 /* DemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A786BBE1AD5079200D72F42 /* DemoListViewController.m */; };
 		6A786BC21AD5079200D72F42 /* DemoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A786BC01AD5079200D72F42 /* DemoDetailViewController.m */; };
 /* End PBXBuildFile section */
@@ -28,18 +28,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6A786B8E1AD502DB00D72F42 /* MGJTempBatchStoreDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGJTempBatchStoreDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A786B8E1AD502DB00D72F42 /* MGJTempStoreDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGJTempStoreDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A786B921AD502DB00D72F42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A786B931AD502DB00D72F42 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6A786B951AD502DB00D72F42 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6A786B961AD502DB00D72F42 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6A786B9E1AD502DB00D72F42 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6A786BA11AD502DB00D72F42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		6A786BA71AD502DB00D72F42 /* MGJTempBatchStoreDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MGJTempBatchStoreDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A786BA71AD502DB00D72F42 /* MGJTempStoreDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MGJTempStoreDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A786BAC1AD502DB00D72F42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6A786BAD1AD502DB00D72F42 /* MGJTempBatchStoreDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGJTempBatchStoreDemoTests.m; sourceTree = "<group>"; };
-		6A786BBA1AD5050900D72F42 /* MGJTempBatchStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGJTempBatchStore.h; sourceTree = "<group>"; };
-		6A786BBB1AD5050900D72F42 /* MGJTempBatchStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGJTempBatchStore.m; sourceTree = "<group>"; };
+		6A786BAD1AD502DB00D72F42 /* MGJTempStoreDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGJTempStoreDemoTests.m; sourceTree = "<group>"; };
+		6A786BBA1AD5050900D72F42 /* MGJTempStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGJTempStore.h; sourceTree = "<group>"; };
+		6A786BBB1AD5050900D72F42 /* MGJTempStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGJTempStore.m; sourceTree = "<group>"; };
 		6A786BBD1AD5079200D72F42 /* DemoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoListViewController.h; sourceTree = "<group>"; };
 		6A786BBE1AD5079200D72F42 /* DemoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoListViewController.m; sourceTree = "<group>"; };
 		6A786BBF1AD5079200D72F42 /* DemoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoDetailViewController.h; sourceTree = "<group>"; };
@@ -67,9 +67,9 @@
 		6A786B851AD502DB00D72F42 = {
 			isa = PBXGroup;
 			children = (
-				6A786BB91AD5050900D72F42 /* MGJTempBatchStore */,
-				6A786B901AD502DB00D72F42 /* MGJTempBatchStoreDemo */,
-				6A786BAA1AD502DB00D72F42 /* MGJTempBatchStoreDemoTests */,
+				6A786BB91AD5050900D72F42 /* MGJTempStore */,
+				6A786B901AD502DB00D72F42 /* MGJTempStoreDemo */,
+				6A786BAA1AD502DB00D72F42 /* MGJTempStoreDemoTests */,
 				6A786B8F1AD502DB00D72F42 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,13 +77,13 @@
 		6A786B8F1AD502DB00D72F42 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6A786B8E1AD502DB00D72F42 /* MGJTempBatchStoreDemo.app */,
-				6A786BA71AD502DB00D72F42 /* MGJTempBatchStoreDemoTests.xctest */,
+				6A786B8E1AD502DB00D72F42 /* MGJTempStoreDemo.app */,
+				6A786BA71AD502DB00D72F42 /* MGJTempStoreDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6A786B901AD502DB00D72F42 /* MGJTempBatchStoreDemo */ = {
+		6A786B901AD502DB00D72F42 /* MGJTempStoreDemo */ = {
 			isa = PBXGroup;
 			children = (
 				6A786B951AD502DB00D72F42 /* AppDelegate.h */,
@@ -96,7 +96,7 @@
 				6A786BA01AD502DB00D72F42 /* LaunchScreen.xib */,
 				6A786B911AD502DB00D72F42 /* Supporting Files */,
 			);
-			path = MGJTempBatchStoreDemo;
+			path = MGJTempStoreDemo;
 			sourceTree = "<group>";
 		};
 		6A786B911AD502DB00D72F42 /* Supporting Files */ = {
@@ -108,12 +108,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6A786BAA1AD502DB00D72F42 /* MGJTempBatchStoreDemoTests */ = {
+		6A786BAA1AD502DB00D72F42 /* MGJTempStoreDemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				6A786BAD1AD502DB00D72F42 /* MGJTempBatchStoreDemoTests.m */,
+				6A786BAD1AD502DB00D72F42 /* MGJTempStoreDemoTests.m */,
 				6A786BAB1AD502DB00D72F42 /* Supporting Files */,
 			);
+			name = MGJTempStoreDemoTests;
 			path = MGJTempBatchStoreDemoTests;
 			sourceTree = "<group>";
 		};
@@ -125,22 +126,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6A786BB91AD5050900D72F42 /* MGJTempBatchStore */ = {
+		6A786BB91AD5050900D72F42 /* MGJTempStore */ = {
 			isa = PBXGroup;
 			children = (
-				6A786BBA1AD5050900D72F42 /* MGJTempBatchStore.h */,
-				6A786BBB1AD5050900D72F42 /* MGJTempBatchStore.m */,
+				6A786BBA1AD5050900D72F42 /* MGJTempStore.h */,
+				6A786BBB1AD5050900D72F42 /* MGJTempStore.m */,
 			);
-			name = MGJTempBatchStore;
-			path = ../MGJTempBatchStore;
+			name = MGJTempStore;
+			path = ../MGJTempStore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6A786B8D1AD502DB00D72F42 /* MGJTempBatchStoreDemo */ = {
+		6A786B8D1AD502DB00D72F42 /* MGJTempStoreDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A786BB11AD502DB00D72F42 /* Build configuration list for PBXNativeTarget "MGJTempBatchStoreDemo" */;
+			buildConfigurationList = 6A786BB11AD502DB00D72F42 /* Build configuration list for PBXNativeTarget "MGJTempStoreDemo" */;
 			buildPhases = (
 				6A786B8A1AD502DB00D72F42 /* Sources */,
 				6A786B8B1AD502DB00D72F42 /* Frameworks */,
@@ -150,14 +151,14 @@
 			);
 			dependencies = (
 			);
-			name = MGJTempBatchStoreDemo;
+			name = MGJTempStoreDemo;
 			productName = MGJTempBatchStoreDemo;
-			productReference = 6A786B8E1AD502DB00D72F42 /* MGJTempBatchStoreDemo.app */;
+			productReference = 6A786B8E1AD502DB00D72F42 /* MGJTempStoreDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6A786BA61AD502DB00D72F42 /* MGJTempBatchStoreDemoTests */ = {
+		6A786BA61AD502DB00D72F42 /* MGJTempStoreDemoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6A786BB41AD502DB00D72F42 /* Build configuration list for PBXNativeTarget "MGJTempBatchStoreDemoTests" */;
+			buildConfigurationList = 6A786BB41AD502DB00D72F42 /* Build configuration list for PBXNativeTarget "MGJTempStoreDemoTests" */;
 			buildPhases = (
 				6A786BA31AD502DB00D72F42 /* Sources */,
 				6A786BA41AD502DB00D72F42 /* Frameworks */,
@@ -168,9 +169,9 @@
 			dependencies = (
 				6A786BA91AD502DB00D72F42 /* PBXTargetDependency */,
 			);
-			name = MGJTempBatchStoreDemoTests;
+			name = MGJTempStoreDemoTests;
 			productName = MGJTempBatchStoreDemoTests;
-			productReference = 6A786BA71AD502DB00D72F42 /* MGJTempBatchStoreDemoTests.xctest */;
+			productReference = 6A786BA71AD502DB00D72F42 /* MGJTempStoreDemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -191,7 +192,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6A786B891AD502DB00D72F42 /* Build configuration list for PBXProject "MGJTempBatchStoreDemo" */;
+			buildConfigurationList = 6A786B891AD502DB00D72F42 /* Build configuration list for PBXProject "MGJTempStoreDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -204,8 +205,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6A786B8D1AD502DB00D72F42 /* MGJTempBatchStoreDemo */,
-				6A786BA61AD502DB00D72F42 /* MGJTempBatchStoreDemoTests */,
+				6A786B8D1AD502DB00D72F42 /* MGJTempStoreDemo */,
+				6A786BA61AD502DB00D72F42 /* MGJTempStoreDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -235,7 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A786BC11AD5079200D72F42 /* DemoListViewController.m in Sources */,
-				6A786BBC1AD5050900D72F42 /* MGJTempBatchStore.m in Sources */,
+				6A786BBC1AD5050900D72F42 /* MGJTempStore.m in Sources */,
 				6A786B971AD502DB00D72F42 /* AppDelegate.m in Sources */,
 				6A786BC21AD5079200D72F42 /* DemoDetailViewController.m in Sources */,
 				6A786B941AD502DB00D72F42 /* main.m in Sources */,
@@ -246,7 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A786BAE1AD502DB00D72F42 /* MGJTempBatchStoreDemoTests.m in Sources */,
+				6A786BAE1AD502DB00D72F42 /* MGJTempStoreDemoTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,7 +256,7 @@
 /* Begin PBXTargetDependency section */
 		6A786BA91AD502DB00D72F42 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6A786B8D1AD502DB00D72F42 /* MGJTempBatchStoreDemo */;
+			target = 6A786B8D1AD502DB00D72F42 /* MGJTempStoreDemo */;
 			targetProxy = 6A786BA81AD502DB00D72F42 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -352,7 +353,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = MGJTempBatchStoreDemo/Info.plist;
+				INFOPLIST_FILE = MGJTempStoreDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -362,7 +363,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = MGJTempBatchStoreDemo/Info.plist;
+				INFOPLIST_FILE = MGJTempStoreDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -380,7 +381,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = MGJTempBatchStoreDemoTests/Info.plist;
+				INFOPLIST_FILE = MGJTempStoreDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MGJTempBatchStoreDemo.app/MGJTempBatchStoreDemo";
@@ -395,7 +396,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = MGJTempBatchStoreDemoTests/Info.plist;
+				INFOPLIST_FILE = MGJTempStoreDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MGJTempBatchStoreDemo.app/MGJTempBatchStoreDemo";
@@ -405,7 +406,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6A786B891AD502DB00D72F42 /* Build configuration list for PBXProject "MGJTempBatchStoreDemo" */ = {
+		6A786B891AD502DB00D72F42 /* Build configuration list for PBXProject "MGJTempStoreDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A786BAF1AD502DB00D72F42 /* Debug */,
@@ -414,21 +415,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A786BB11AD502DB00D72F42 /* Build configuration list for PBXNativeTarget "MGJTempBatchStoreDemo" */ = {
+		6A786BB11AD502DB00D72F42 /* Build configuration list for PBXNativeTarget "MGJTempStoreDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A786BB21AD502DB00D72F42 /* Debug */,
 				6A786BB31AD502DB00D72F42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		6A786BB41AD502DB00D72F42 /* Build configuration list for PBXNativeTarget "MGJTempBatchStoreDemoTests" */ = {
+		6A786BB41AD502DB00D72F42 /* Build configuration list for PBXNativeTarget "MGJTempStoreDemoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6A786BB51AD502DB00D72F42 /* Debug */,
 				6A786BB61AD502DB00D72F42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

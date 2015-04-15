@@ -1,5 +1,5 @@
 //
-//  MGJTempBatchStore.h
+//  MGJTempStore.h
 //  MGJAnalytics
 //
 //  Created by limboy on 12/2/14.
@@ -11,17 +11,17 @@
 /**
  *  数据使用成功时，需要被调用的 block
  */
-typedef void (^MGJTempBatchStoreConsumeSuccessBlock)();
+typedef void (^MGJTempStoreConsumeSuccessBlock)();
 
 /**
  *  数据使用失败时，需要被调用的 block
  */
-typedef void (^MGJTempBatchStoreConsumeFailureBlock)();
+typedef void (^MGJTempStoreConsumeFailureBlock)();
 
 /**
  *  临时存储多条数据的内容
  */
-@interface MGJTempBatchStore : NSObject
+@interface MGJTempStore : NSObject
 
 /**
  *  当前文件的 size (byte)
@@ -64,6 +64,6 @@ typedef void (^MGJTempBatchStoreConsumeFailureBlock)();
  *
  *  @param handler 第一个参数是当前文件中保存的内容，当使用成功时执行一下 successBlock，使用失败时执行以下 failureBlock
  */
-- (void)consumeDataWithHandler:(void (^)(NSString *content, MGJTempBatchStoreConsumeSuccessBlock successBlock, MGJTempBatchStoreConsumeFailureBlock failureBlock))handler;
+- (void)consumeDataWithHandler:(void (^)(NSString *content, MGJTempStoreConsumeSuccessBlock successBlock, MGJTempStoreConsumeFailureBlock failureBlock))handler;
 
 @end

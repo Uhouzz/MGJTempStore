@@ -1,14 +1,14 @@
 //
-//  MGJTempBatchStore.m
+//  MGJTempStore.m
 //  MGJAnalytics
 //
 //  Created by limboy on 12/2/14.
 //  Copyright (c) 2014 mogujie. All rights reserved.
 //
 
-#import "MGJTempBatchStore.h"
+#import "MGJTempStore.h"
 
-@interface MGJTempBatchStore ()
+@interface MGJTempStore ()
 @property (nonatomic, copy, readwrite) NSString *filePath;
 
 /**
@@ -25,7 +25,7 @@
 @property (nonatomic, readwrite, assign) float fileSize;
 @end
 
-@implementation MGJTempBatchStore
+@implementation MGJTempStore
 
 #pragma mark - Public
 
@@ -65,7 +65,7 @@
     [self.fileManager createFileAtPath:self.filePath contents:nil attributes:nil];
 }
 
-- (void)consumeDataWithHandler:(void (^)(NSString *, MGJTempBatchStoreConsumeSuccessBlock, MGJTempBatchStoreConsumeFailureBlock))handler
+- (void)consumeDataWithHandler:(void (^)(NSString *, MGJTempStoreConsumeSuccessBlock, MGJTempStoreConsumeFailureBlock))handler
 {
     NSData *fileData = [self.fileManager contentsAtPath:self.filePath];
     NSString *fileString = [[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding];
@@ -117,7 +117,7 @@
         NSError *createError;
         [self.fileManager createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:&createError];
         if (createError) {
-            NSLog(@"<MGJTempBatchStore> Create Directory For File Path error :%@", createError);
+            NSLog(@"<MGJTempStore> Create Directory For File Path error :%@", createError);
         }
     }
 }
