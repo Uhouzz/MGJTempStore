@@ -22,6 +22,7 @@
 @property (nonatomic, copy) NSString *baseDirectory;
 @property (nonatomic) NSFileManager *fileManager;
 @property (nonatomic, readwrite, copy) NSString *dataString;
+@property (nonatomic, readwrite, assign) float fileSize;
 @end
 
 @implementation MGJTempBatchStore
@@ -56,6 +57,7 @@
     [fileHandler seekToEndOfFile];
     [fileHandler writeData:[data dataUsingEncoding:NSUTF8StringEncoding]];
     [fileHandler closeFile];
+    self.fileSize = [[self.fileManager attributesOfItemAtPath:self.filePath error:nil] fileSize];
 }
 
 - (void)clearData
@@ -92,11 +94,6 @@
     };
     
     handler(fileString, successHandler, failureHandler);
-}
-
-- (float)fileSize
-{
-    return [[self.fileManager attributesOfItemAtPath:self.filePath error:nil] fileSize];
 }
 
 - (NSTimeInterval)timeIntervalSinceCreated
