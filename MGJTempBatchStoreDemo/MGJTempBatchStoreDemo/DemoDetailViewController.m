@@ -21,8 +21,18 @@
 + (void)load
 {
     DemoDetailViewController *detailViewController = [[DemoDetailViewController alloc] init];
-    [DemoListViewController registerWithTitle:@"插入多条数据" handler:^UIViewController *{
+    [DemoListViewController registerWithTitle:@"插入多条数据并消费成功" handler:^UIViewController *{
         detailViewController.selectedSelector = @selector(demoAppendBatchData);
+        return detailViewController;
+    }];
+    
+    [DemoListViewController registerWithTitle:@"消费数据失败" handler:^UIViewController *{
+        detailViewController.selectedSelector = @selector(consumeDataSuccess);
+        return detailViewController;
+    }];
+    
+    [DemoListViewController registerWithTitle:@"当数据大于一定量时再处理" handler:^UIViewController *{
+        detailViewController.selectedSelector = @selector(consumeDataUntilSize);
         return detailViewController;
     }];
 }
@@ -59,6 +69,7 @@
 {
     [super viewDidDisappear:animated];
     [self.resultTextView removeObserver:self forKeyPath:@"contentSize"];
+    [self.store removeObserver:self forKeyPath:@"fileSize"];
     self.resultTextView.text = @"";
 }
 
@@ -87,18 +98,59 @@
         NSInteger textViewHeight = self.resultTextView.frame.size.height;
         [self.resultTextView setContentOffset:CGPointMake(0, MAX(contentHeight - textViewHeight, 0)) animated:YES];
     }
+    else if ([keyPath isEqualToString:@"fileSize"]) {
+        if (self.store.fileSize > 1024) {
+            [self appendLog:@"数据达到了 1K，可以使用了"];
+        }
+    }
 }
 
 #pragma mark -
 
 - (void)demoAppendBatchData
 {
+    [self appendLog:@"append data foo"];
     [self.store appendData:@"foo"];
+    [self appendLog:@"append data bar"];
     [self.store appendData:@"bar"];
     [self.store consumeDataWithHandler:^(NSString *content, MGJTempBatchStoreConsumeSuccessBlock successBlock, MGJTempBatchStoreConsumeFailureBlock failureBlock) {
-        [self appendLog:content];
+        [self appendLog:[NSString stringWithFormat:@"got content:%@", content]];
         successBlock();
     }];
+}
+
+- (void)consumeDataSuccess
+{
+    [self appendLog:@"写入数据: foobar"];
+    [self.store appendData:@"foobar"];
+    [self.store consumeDataWithHandler:^(NSString *content, MGJTempBatchStoreConsumeSuccessBlock successBlock, MGJTempBatchStoreConsumeFailureBlock failureBlock) {
+        // 假设向服务器发送数据失败
+        [self appendLog:[NSString stringWithFormat:@"拿到数据: %@", content]];
+        failureBlock();
+        [self appendLog:@"发送数据给服务器失败，数据自动放回"];
+        // 这时数据会被重新放回去
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.store consumeDataWithHandler:^(NSString *content, MGJTempBatchStoreConsumeSuccessBlock successBlock, MGJTempBatchStoreConsumeFailureBlock failureBlock) {
+                [self appendLog:[NSString stringWithFormat:@"再次获取数据: %@", content]];
+                successBlock();
+            }];
+        });
+    }];
+}
+
+- (void)consumeDataUntilSize
+{
+    [self appendLog:@"写入 1K 的数据"];
+    
+    [self.store addObserver:self forKeyPath:@"fileSize" options:NSKeyValueObservingOptionNew context:nil];
+    NSString *stringToBeWritten = @"the quick brown fox jumps over the lazy dog\n";
+    for (int i = 0; i < 25; i++) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(i * 0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.store appendData:stringToBeWritten];
+            [self appendLog:[NSString stringWithFormat:@"当前数据大小: %f", self.store.fileSize]];
+        });
+    }
+    
 }
 
 @end
