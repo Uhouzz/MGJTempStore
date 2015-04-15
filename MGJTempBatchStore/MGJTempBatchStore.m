@@ -96,9 +96,9 @@
     handler(fileString, successHandler, failureHandler);
 }
 
-- (NSTimeInterval)timeIntervalSinceCreated
+- (NSTimeInterval)timeIntervalSinceLastModified
 {
-    NSDate *creationDate = [[self.fileManager attributesOfItemAtPath:self.filePath error:nil] fileCreationDate];
+    NSDate *creationDate = [[self.fileManager attributesOfItemAtPath:self.filePath error:nil] fileModificationDate];
     return [[NSDate date] timeIntervalSinceDate:creationDate];
 }
 

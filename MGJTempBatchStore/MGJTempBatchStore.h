@@ -31,7 +31,7 @@ typedef void (^MGJTempBatchStoreConsumeFailureBlock)();
 /**
  *  当前时间和文件创建时间的间隔，单位为秒
  */
-@property (nonatomic, readonly, assign) NSTimeInterval timeIntervalSinceCreated;
+@property (nonatomic, readonly, assign) NSTimeInterval timeIntervalSinceLastModified;
 
 /**
  *  当前存储的内容
