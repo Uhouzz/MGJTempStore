@@ -35,6 +35,11 @@
         detailViewController.selectedSelector = @selector(consumeDataUntilSize);
         return detailViewController;
     }];
+    
+    [DemoListViewController registerWithTitle:@"获取文件最后修改时间" handler:^UIViewController *{
+        detailViewController.selectedSelector = @selector(lastModifiedTime);
+        return detailViewController;
+    }];
 }
 
 - (void)viewDidLoad {
@@ -151,6 +156,20 @@
         });
     }
     
+}
+
+- (void)lastModifiedTime
+{
+    [self appendLog:@"写入第一行数据"];
+    [self.store appendData:@"第一行数据"];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self appendLog:[NSString stringWithFormat:@"%.3f 秒钟前更新", self.store.timeIntervalSinceLastModified]];
+        [self.store appendData:@"第二行数据"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self appendLog:[NSString stringWithFormat:@"%.3f 秒钟前更新", self.store.timeIntervalSinceLastModified]];
+        });
+    });
 }
 
 @end
