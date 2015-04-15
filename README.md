@@ -1,3 +1,6 @@
+# MGJTempStore
+![version](https://img.shields.io/cocoapods/v/MGJTempStore.svg) ![license](https://img.shields.io/cocoapods/l/MGJTempStore.svg) ![platform](https://img.shields.io/cocoapods/p/MGJTempStore.svg)
+
 ## MGJTempStore 是什么
 
 MGJTempStore 是一个用于临时存储数据的 Objective-C 类库
@@ -15,6 +18,12 @@ MGJTempStore 是一个用于临时存储数据的 Objective-C 类库
 ### 缓存日志
 
 为了方便排查故障或统计客户端的运行情况，可能会在客户端记录一些日志，这时也可以用这个工具来实现。
+
+## 安装
+
+```
+pod 'MGJTempStore'
+```
 
 ## Demo
 
@@ -39,3 +48,4 @@ MGJTempStore *store = [[MGJTempStore alloc] initWithPath:@"tmp.txt"];
 ## 协议
 
 MGJTempStore 被许可在 MIT 协议下使用。查阅 LICENSE 文件来获得更多信息。
+I
