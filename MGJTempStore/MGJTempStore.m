@@ -29,17 +29,16 @@
 
 #pragma mark - Public
 
-- (instancetype)init
-{
+- (instancetype) init {
     return [self initWithFilePath:@""];
 }
 
-- (instancetype)initWithFilePath:(NSString *)filePath
-{
+- (instancetype) initWithFilePath:(NSString *)filePath {
     NSAssert(filePath, @"文件路径不能为空");
-    
+
     if (self = [super init]) {
-        self.baseDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        self.baseDirectory =
+            [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         self.fileManager = [NSFileManager defaultManager];
         [self generateDirectoryForFilePath:filePath];
         self.filePath = [self.baseDirectory stringByAppendingPathComponent:filePath];
@@ -48,74 +47,76 @@
             [self.fileManager createFileAtPath:self.filePath contents:nil attributes:nil];
         }
     }
+
     return self;
 }
 
-- (void)appendData:(NSString *)data
-{
+- (void) appendData:(NSString *)data {
     NSFileHandle *fileHandler = [NSFileHandle fileHandleForUpdatingAtPath:self.filePath];
+
     [fileHandler seekToEndOfFile];
     [fileHandler writeData:[data dataUsingEncoding:NSUTF8StringEncoding]];
     [fileHandler closeFile];
     self.fileSize = [[self.fileManager attributesOfItemAtPath:self.filePath error:nil] fileSize];
 }
 
-- (void)clearData
-{
+- (void) clearData {
     [self.fileManager createFileAtPath:self.filePath contents:nil attributes:nil];
 }
 
-- (void)consumeDataWithHandler:(void (^)(NSString *, MGJTempStoreConsumeSuccessBlock, MGJTempStoreConsumeFailureBlock))handler
-{
+- (void) consumeDataWithHandler:(void (^)(NSString *, MGJTempStoreConsumeSuccessBlock,
+    MGJTempStoreConsumeFailureBlock))handler {
     NSData *fileData = [self.fileManager contentsAtPath:self.filePath];
     NSString *fileString = [[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding];
-    
+
     // 重命名当前文件为临时文件用于消费
     [self.fileManager moveItemAtPath:self.filePath toPath:self.consumingFilePath error:NULL];
     // 同时新建一个之前的文件，用于存储在消费过程中又产生的新内容
     [self.fileManager createFileAtPath:self.filePath contents:nil attributes:nil];
-    
-    void (^successHandler)() = ^{
+
+    void (^ successHandler)() = ^{
         // 如果数据消费成功，那么中间状态的文件就可删掉了
         [self.fileManager removeItemAtPath:self.consumingFilePath error:NULL];
     };
-    
-    void (^failureHandler)() = ^{
+
+    void (^ failureHandler)() = ^{
         // 如果数据消费失败，把中间状态的文件内容再放回去
-        // 先获取之前的内容，合并后再写入
+        // 保留原来的顺序，合并后再写入
         // TODO 这块或许还有更高效的实现
-        NSMutableData *combinedFileData = [NSMutableData dataWithData:[self.fileManager contentsAtPath:self.filePath]];
+        NSMutableData *combinedFileData = [NSMutableData data];
         [combinedFileData appendData:fileData];
+        [combinedFileData appendData:[NSMutableData dataWithData:[self.fileManager contentsAtPath:self.filePath]]];
         NSFileHandle *fileHandler = [NSFileHandle fileHandleForUpdatingAtPath:self.filePath];
         [fileHandler seekToFileOffset:0];
         [fileHandler writeData:combinedFileData];
         [fileHandler closeFile];
         [self.fileManager removeItemAtPath:self.consumingFilePath error:NULL];
     };
-    
-    handler(fileString, successHandler, failureHandler);
-}
 
-- (NSTimeInterval)timeIntervalSinceLastModified
-{
+    handler(fileString, successHandler, failureHandler);
+} /* consumeDataWithHandler */
+
+- (NSTimeInterval) timeIntervalSinceLastModified {
     NSDate *creationDate = [[self.fileManager attributesOfItemAtPath:self.filePath error:nil] fileModificationDate];
+
     return [[NSDate date] timeIntervalSinceDate:creationDate];
 }
 
-- (NSString *)dataString
-{
+- (NSString *) dataString {
     NSData *fileData = [self.fileManager contentsAtPath:self.filePath];
+
     return [[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding];
 }
 
 #pragma mark - Utils
 
-- (void)generateDirectoryForFilePath:(NSString *)filePath
-{
+- (void) generateDirectoryForFilePath:(NSString *)filePath {
     if ([filePath rangeOfString:@"/"].location != NSNotFound) {
-        NSString *directoryPath = [self.baseDirectory stringByAppendingPathComponent:[filePath stringByDeletingLastPathComponent]];
+        NSString *directoryPath =
+            [self.baseDirectory stringByAppendingPathComponent:[filePath stringByDeletingLastPathComponent]];
         NSError *createError;
-        [self.fileManager createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:&createError];
+        [self.fileManager createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:&
+        createError];
         if (createError) {
             NSLog(@"<MGJTempStore> Create Directory For File Path error :%@", createError);
         }
