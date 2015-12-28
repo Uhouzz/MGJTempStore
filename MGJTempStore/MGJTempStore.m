@@ -56,6 +56,7 @@
     NSFileHandle *fileHandler = [NSFileHandle fileHandleForUpdatingAtPath:self.filePath];
     [fileHandler seekToEndOfFile];
     [fileHandler writeData:[data dataUsingEncoding:NSUTF8StringEncoding]];
+    [fileHandler writeData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
     [fileHandler closeFile];
     self.fileSize = [[self.fileManager attributesOfItemAtPath:self.filePath error:nil] fileSize];
 }
