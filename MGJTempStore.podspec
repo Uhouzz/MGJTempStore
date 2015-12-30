@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "MGJTempStore"
-  s.version      = "0.8.1"
+  s.version      = "0.8.2"
   s.summary      = "A temp store used for storing temp data"
 
   s.homepage     = "http://github.com/mogujie/MGJTempStore"
@@ -66,7 +66,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/ttgb/MGJTempStore.git", :tag => "0.8.1" }
+  s.source       = { :git => "https://github.com/ttgb/MGJTempStore.git", :tag => "0.8.2" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
